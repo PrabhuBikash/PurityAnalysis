@@ -1,0 +1,181 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: #0f1117;
+  color: #e6e6e6;
+}
+
+h1 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* CONTROLS */
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto auto auto auto;
+  gap: 10px;
+  padding: 10px;
+  background: #161a22;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 11px;
+  color: #aaa;
+}
+
+input {
+  padding: 6px;
+  border: none;
+  border-radius: 5px;
+  background: #1e2430;
+  color: white;
+}
+
+button {
+  grid-column: 1/-1;
+  padding: 8px;
+  background: #4cafef;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* GRAPH GRID */
+.graph-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 40vh;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 600px) {
+  .graph-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.graph-box {
+  border: 2px solid #1e293b;
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-box.full-width {
+  grid-column: 1 / -1;
+  grid-row: span 2;
+}
+
+.graph-title {
+  text-align: center;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.graph-box canvas {
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #6366f1;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:focus {
+  outline: 2px solid rgba(99, 102, 241, 0.4);
+  outline-offset: 2px;
+}
+
+.log-toggle {
+  width: fit-content;
+}
+
+/* TABLE */
+
+.table-container {
+  overflow: auto;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th {
+  background: #1e2430;
+  position: sticky;
+  top: 0;
+  font-size: 11px;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+td, th {
+  padding: 6px;
+  border-bottom: 1px solid #333;
+}
+
+td + td, th + th {
+  border-left: 1px solid #333;
+}
+
+tr:hover {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+  cursor: pointer;
+}
+
+.row-green td { background: rgba(22, 163, 74, 0.25); }
+.row-yellow td { background: rgba(234, 179, 8, 0.25); }
+.row-red td { background: rgba(220, 38, 38, 0.25); }
+
+/* POPUP SEQUENCE VIEW */
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 10px;
+  display: none;
+  z-index: 1000;
+  width: 60%;
+  height: 50%;
+}
+
+.popup canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.popup-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.info {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  background-color: goldenrod;
+}

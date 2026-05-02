@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purity Analysis</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <h1>Purity Analysis</h1>
+  <button class="info" onclick="window.location = 'coreperfect'">Core-Perfect Numbers</button>
+
+  <div class="controls">
+    <div class="field"><label>Seed(n)</label><input id="funcInput" value="(n+1)>>1"></div>
+    <div class="field"><label>Property(n)</label><input id="propInput" value="n%2"></div>
+    <div class="field"><label>Threshold(n)</label><input id="thresholdInput" value="n"></div>
+    <div class="field"><label>From</label><input id="fromInput" type="number" value="1"></div>
+    <div class="field"><label>To</label><input id="toInput" type="number" value="50"></div>
+    <div class="field"><label>Gap</label><input id="gapInput" type="number" value="1"></div>
+    <div class="field"><label>Max Iter</label><input id="maxIterInput" type="number" value="500"></div>
+    <button onclick="run()">Run Analysis</button>
+  </div>
+
+  <!-- GRAPHS -->
+  <div class="graph-grid">
+    <div class="graph-box">
+      <div class="graph-title">n → seed</div>
+      <label class="log-toggle"><input type="checkbox" data-graph="graph_seed">log</label>
+      <canvas id="graph_seed"></canvas>
+    </div>
+    <div class="graph-box">
+      <div class="graph-title">n → property</div>
+      <label class="log-toggle"><input type="checkbox" data-graph="graph_property">log</label>
+      <canvas id="graph_property"></canvas>
+    </div>
+    <div class="graph-box">
+      <div class="graph-title">n → ord</div>
+      <label class="log-toggle"><input type="checkbox" data-graph="graph_ord">log</label>
+      <canvas id="graph_ord"></canvas>
+    </div>
+    <div class="graph-box">
+      <div class="graph-title">n → core</div>
+      <label class="log-toggle"><input type="checkbox" data-graph="graph_core">log</label>
+      <canvas id="graph_core"></canvas>
+    </div>
+    <div class="graph-box">
+      <div class="graph-title">n → ordsum</div>
+      <label class="log-toggle"><input type="checkbox" data-graph="graph_ordsum">log</label>
+      <canvas id="graph_ordsum"></canvas>
+    </div>
+    <div class="graph-box">
+      <div class="graph-title">n → coresum</div>
+      <label class="log-toggle"><input type="checkbox" data-graph="graph_coresum">log</label>
+      <canvas id="graph_coresum"></canvas>
+    </div>
+    <div class="graph-box full-width">
+      <div class="graph-title">Combined View</div>
+      <label class="log-toggle"><input type="checkbox" data-graph="graph_all">log</label>
+      <canvas id="graph_all"></canvas>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-container">
+    <table id="resultTable">
+      <thead>
+        <tr>
+          <th>n</th><th>seed</th><th>Property</th><th>Threshold</th><th>ord</th><th>core</th><th>τ</th><th>coresum</th><th>ordsum</th><th>coreseq</th><th>ordseq</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- POPUP -->
+  <div id="popup" class="popup">
+    <div class="graph-title">n = <span id="popup-n"></span></div>
+    <div class="popup-close" onclick="closePopup()">✕</div>
+    <canvas id="popupCanvas"></canvas>
+  </div>
+
+  <script src="graph.js"></script>
+  <script src="functions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
